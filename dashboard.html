@@ -78,14 +78,24 @@
         <h1>Paywake <span>Internal</span></h1>
       </a>
       <div class="between">
-        <p id="name-and-title"><span class="__full-name-fill"></span><span>,&nbsp;</span><b><span class="__title-fill"></span></b></p>
-        <button onclick="logout()">Logout</button>
+        <p id="name-and-title"><b><span class="__full-name-fill"></span></b><span>,&nbsp;</span><span class="__title-fill"></span></p>
+        <button class="gradient" onclick="fullReload()" id="refresh-big">Refresh Data</button>
+        <button class="gradient" onclick="fullReload()" id="refresh-small">Refresh</button>
       </div>
     </div>
     <div class="content">
       <div class="splash">
         <p>Welcome, <span class="__first-name-fill">--</span></p>
         <h1>Core Statistics</h1>
+        <br>
+        <p>Coming soon.</p>
+        <br>
+        <h1>Account</h1>
+        <p id="account-name"><b><span class="__full-name-fill"></span></b><span>,&nbsp;</span><span class="__title-fill"></span></p>
+        <br>
+        <div class="middle">
+          <button onclick="logout()" class="full-width">Logout</button>
+        </div>
       </div>
       <div class="footer-container">
         <div class="footer">

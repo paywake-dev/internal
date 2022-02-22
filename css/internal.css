@@ -6,8 +6,22 @@
   margin: 0px 30px;
 }
 
+
+#refresh-small {
+  display: none;
+}
+#refresh-big {
+  display: inline-block;
+}
+
 @media only screen and (max-width: 720px) {
   #name-and-title {
     display: none;
+  }
+  #refresh-big {
+    display: none;
+  }
+  #refresh-small {
+    display: inline-block;
   }
 }
