@@ -4,7 +4,7 @@
 
     <!--TAGS-->
     <meta charset="utf-8">
-    <meta name="title" content="Paywake Internal">
+    <meta name="title" content="Paywake Internal - Dashboard">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
@@ -59,13 +59,14 @@
 
     <!--PRELOAD-->
     <script src="js/constants.js"></script>
+    <script src="js/auth/logged-in-only.js"></script>
     <script src="js/auth/auth.js"></script>
     <script src="js/auth/routines.js"></script>
-    <script src="js/preload/index.js"></script>
+    <script src="js/preload/dashboard.js"></script>
     <link rel="preload" as="image" href="https://paywake.net/assets/images/sun-192.png" media="(max-width: 192px)">
 
     <!--TITLE-->
-    <title>Paywake Internal</title>
+    <title>Paywake Internal - Dashboard</title>
 
   </head>
   <body>
@@ -75,9 +76,16 @@
         <img id="sun" src="https://paywake.net/assets/images/sun-192.png">
         <h1>Paywake <span>Internal</span></h1>
       </a>
+      <div class="between">
+        <p id="name-and-title"><span class="__full-name-fill"></span><span>,&nbsp;</span><b><span class="__title-fill"></span></b></p>
+        <button onclick="logout()">Logout</button>
+      </div>
     </div>
     <div class="content">
-      <div class="splash"></div>
+      <div class="splash">
+        <p>Welcome, <span class="__first-name-fill">--</span></p>
+        <h1>Core Statistics</h1>
+      </div>
       <div class="footer-container">
         <div class="footer">
           <p>&copy; <span id="__YEAR">--</span> Paywake Corporation</p>
@@ -93,6 +101,6 @@
     </div>
 
     <!--POST-LOAD-->
-    <script src="js/login.js"></script>
+    <script src="js/dashboard.js"></script>
   </body>
 </html>

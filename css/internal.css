@@ -1,0 +1,13 @@
+.logo > h1 > span {
+  font-weight: 300 !important;
+}
+
+#name-and-title {
+  margin: 0px 30px;
+}
+
+@media only screen and (max-width: 720px) {
+  #name-and-title {
+    display: none;
+  }
+}

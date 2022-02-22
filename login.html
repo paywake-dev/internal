@@ -4,7 +4,7 @@
 
     <!--TAGS-->
     <meta charset="utf-8">
-    <meta name="title" content="Paywake Internal">
+    <meta name="title" content="Paywake Internal - Login">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
@@ -59,13 +59,14 @@
 
     <!--PRELOAD-->
     <script src="js/constants.js"></script>
+    <script src="js/preload/login.js"></script>
+    <script src="js/auth/logged-out-only.js"></script>
     <script src="js/auth/auth.js"></script>
     <script src="js/auth/routines.js"></script>
-    <script src="js/preload/index.js"></script>
     <link rel="preload" as="image" href="https://paywake.net/assets/images/sun-192.png" media="(max-width: 192px)">
 
     <!--TITLE-->
-    <title>Paywake Internal</title>
+    <title>Paywake Internal - Login</title>
 
   </head>
   <body>
@@ -77,7 +78,23 @@
       </a>
     </div>
     <div class="content">
-      <div class="splash"></div>
+      <div class="splash">
+        <h1>Log in</h1>
+        <br>
+        <input spellcheck="false" type="text" id="username" placeholder="Username" maxlength="64" onblur="verifyUsername(this)">
+        <div id="__show-password-container">
+          <input id="password" type="password" placeholder="Password" name="password" maxlength="64" onblur="verifyPassword(this)" spellcheck="false">
+          <div id="__show-password" target="#password"></div>
+        </div>
+        <br>
+        <p class="small" id="message"></p>
+        <br>
+        <br>
+        <div class="between">
+          <a class="link" href="./forgot">Forgot Password</a>
+          <button id="login-button" onclick="login(this)">Log In</button>
+        </div>
+      </div>
       <div class="footer-container">
         <div class="footer">
           <p>&copy; <span id="__YEAR">--</span> Paywake Corporation</p>
