@@ -1,4 +1,5 @@
 const YEAR = (new Date()).getFullYear()
+const API = "https://0zynwo3qw4.execute-api.us-east-1.amazonaws.com/dev"
 const REDIRECTS = {
   home: "./dashboard",
   onAuth: "./dashboard",
