@@ -40,6 +40,10 @@
   margin: 0px;
   margin-top: 4px;
   margin-right: 8px;
+  font-weight: bold;
+  font-family: 'Urbanist', sans-serif;
+  opacity: 0.4;
+  text-transform: uppercase;
 }
 
 .metric > div {
