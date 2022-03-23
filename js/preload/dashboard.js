@@ -147,9 +147,12 @@ const initPage = () => {
 }
 
 const reloadMetrics = () => {
+  /*
   loadMetrics(() => {
     buildPage()
   })
+  */
+  window.location.reload()
 }
 
 $(document).ready(() => {
