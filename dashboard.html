@@ -79,15 +79,65 @@
       </a>
       <div class="between">
         <p id="name-and-title"><b><span class="__full-name-fill"></span></b><span>,&nbsp;</span><span class="__title-fill"></span></p>
-        <button class="gradient" onclick="fullReload()" id="refresh-big">Refresh Data</button>
-        <button class="gradient" onclick="fullReload()" id="refresh-small">Refresh</button>
+        <button class="gradient" onclick="reloadMetrics()" id="refresh-big">Refresh Data</button>
+        <button class="gradient" onclick="reloadMetrics()" id="refresh-small">Refresh</button>
       </div>
     </div>
     <div class="content">
       <div class="splash">
         <p>Welcome, <span class="__first-name-fill">--</span></p>
-        <h1>Core Statistics</h1>
+        <h1>Wakeups</h1>
+        <div class="metric">
+          <p>Wakeup Deposits</p>
+          <div>
+            <div>
+              <p>Today</p>
+              <p id="__METRIC-totalWakeupDeposits">$------.--</p>
+            </div>
+            <div>
+              <p>Yesterday</p>
+              <p id="__METRIC-wakeupDepositsToday">$----.--</p>
+            </div>
+            <div>
+              <p>Total</p>
+              <p id="__METRIC-wakeupDepositsYesterday">$----.--</p>
+            </div>
+          </div>
+        </div>
+        <div class="metric">
+          <p>Average Deposit</p>
+          <div>
+            <div>
+              <p>Today</p>
+              <p id="__METRIC-meanDepositToday">$------.--</p>
+            </div>
+            <div>
+              <p>Yesterday</p>
+              <p id="__METRIC-meanDepositYesterday">$----.--</p>
+            </div>
+          </div>
+        </div>
+        <div class="metric">
+          <p>Wakeup Failure Rate</p>
+          <div>
+            <div>
+              <p>Today</p>
+              <p id="__METRIC-wufrToday">$------.--</p>
+            </div>
+            <div>
+              <p>Yesterday</p>
+              <p id="__METRIC-wufrYesterday">$----.--</p>
+            </div>
+          </div>
+        </div>
         <br>
+        <h1>Financial</h1>
+        <p>Coming soon.</p>
+        <br>
+        <h1>User Base</h1>
+        <p>Coming soon.</p>
+        <br>
+        <h1>Balances</h1>
         <p>Coming soon.</p>
         <br>
         <h1>Account</h1>

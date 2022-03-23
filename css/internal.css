@@ -25,3 +25,41 @@
     display: inline-block;
   }
 }
+
+.metric {
+  width: min(calc(60vw + 75px), calc(60vh + 150px));
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 16px 0px;
+}
+
+.metric > p {
+  margin: 0px;
+  margin-top: 4px;
+}
+
+.metric > div {
+  display: flex;
+  align-items: space-between;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.metric > div > div {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  align-items: space-between;
+  justify-content: flex-end;
+}
+
+.metric > div > div > p {
+  margin: 4px 0px;
+}
+
+.metric > div > div > p:first-child {
+  margin-right: 16px;
+}

@@ -5,6 +5,9 @@ const REDIRECTS = {
   onAuth: "./dashboard",
   noAuth: "./login"
 }
+const TIME_ZONE = "America/Los_Angeles"
+const EPOCH = [1970, 0, 1]
+const LOCAL_STORAGE_TAG = "paywake-internal-"
 const ANTI_CLEARS = []
 
 console.log("\u00A9 " + YEAR.toString() + " Paywake Corporation")
