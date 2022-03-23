@@ -39,6 +39,7 @@
 .metric > p {
   margin: 0px;
   margin-top: 4px;
+  margin-right: 8px;
 }
 
 .metric > div {
