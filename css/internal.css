@@ -68,3 +68,7 @@
 .metric > div > div > p:first-child {
   margin-right: 16px;
 }
+
+.metric > div > div:first-child > p {
+  font-weight: bold;
+}

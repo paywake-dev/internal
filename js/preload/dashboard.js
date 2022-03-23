@@ -24,6 +24,7 @@ const METRIC_FUNCS = {
   activeUsersYesterday: DATA_API.getDAUsYesterday,
   feedbackToday: DATA_API.getFeedbackToday,
   feedbackYesterday: DATA_API.getFeedbackYesterday,
+  feedbackAll: DATA_API.getAllFeedback,
   feedbackStrings: DATA_API.getAllFeedbackStrings,
 
   //BALANCES
@@ -55,6 +56,7 @@ const PERCENTAGE_METRICS = [
   "wufrYesterday",
   "feedbackToday",
   "feedbackYesterday",
+  "feedbackAll",
 ]
 
 const initMetrics = () => {
