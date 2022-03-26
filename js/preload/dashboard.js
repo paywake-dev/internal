@@ -127,7 +127,6 @@ const buildPage = () => {
 }
 
 const fillAttributes = () => {
-  const UNFILLED = "--"
   ROUTINES.get((data) => {
     if (!data) {
       ROUTINES.logout()
@@ -139,6 +138,7 @@ const fillAttributes = () => {
 }
 
 const setNameData = () => {
+  const UNFILLED = "--"
   const data = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TAG + "name-data") || "[]")
   let name = UNFILLED
   let title = UNFILLED
