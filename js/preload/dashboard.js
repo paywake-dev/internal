@@ -124,9 +124,10 @@ const buildPage = () => {
 
 const fillAttributes = () => {
   const UNFILLED = "--"
-  ROUTINES.get((data, err) => {
-    if (err) {
-      console.log(err)
+  ROUTINES.get((data) => {
+    if (!data) {
+      ROUTINES.logout()
+      return;
     }
     let name = UNFILLED
     let title = UNFILLED
