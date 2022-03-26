@@ -308,6 +308,31 @@ const DATA_API = {
       DATA_API.datasets.get.wakeups(onData)
     }
   },
+  getReturnsOnDay: (day, callback = (r) => {}) => {
+    const onData = () => {
+      let failed = 0
+      let total = 0
+      for (let point of DATA_API.datasets.wakeups) {
+        if (parseInt(point.id.S.split("-")[1]) === day) {
+          if (!(day > DATA_API.constants.today) && (day !== DATA_API.constants.today || DATA_API.utilities.time() > (parseInt(point.time.N) + 3))) {
+            if (!parseInt(point.verified.N)) {
+              failed += (Math.floor(parseInt(point.deposit.N) * (1 - 0.029)) - 30)
+            }
+            else {
+              total += parseInt(point.deposit.N)
+            }
+          }
+        }
+      }
+      callback((failed / total) * 0.85)
+    }
+    if (DATA_API.datasets.wakeups.length) {
+      onData()
+    }
+    else {
+      DATA_API.datasets.get.wakeups(onData)
+    }
+  },
   getRevenueOnDay: (day, callback = (r) => {}) => {
     const onData = () => {
       let revenue = 0
@@ -408,6 +433,33 @@ const DATA_API = {
     let c = 0
     const recurse = (day) => {
       DATA_API.getWuFROnDay(day, (r) => {
+        sum += r;
+        c++;
+        if (day === DATA_API.constants.today) {
+          callback(sum / c)
+        }
+        else {
+          recurse(day + 1)
+        }
+      })
+    }
+    recurse(DATA_API.constants.launchDay)
+  },
+  getReturnsToday: (callback = (r) => {}) => {
+    DATA_API.getReturnsOnDay(DATA_API.constants.today, (r) => {
+      callback(r)
+    })
+  },
+  getReturnsYesterday: (callback = (r) => {}) => {
+    DATA_API.getReturnsOnDay(DATA_API.constants.today - 1, (r) => {
+      callback(r)
+    })
+  },
+  getReturnsAllTime: (callback = (r) => {}) => {
+    let sum = 0
+    let c = 0
+    const recurse = (day) => {
+      DATA_API.getReturnsOnDay(day, (r) => {
         sum += r;
         c++;
         if (day === DATA_API.constants.today) {
