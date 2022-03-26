@@ -108,6 +108,10 @@ const formatPercentage = (n) => {
   return ((Math.round(n * 100 * 100) / 100).toFixed(2).toString() + "%")
 }
 
+const formatNumber = (n) => {
+  return new Intl.NumberFormat("en-US").format(n)
+}
+
 const buildPage = () => {
   const NO_METRIC = "N/A"
   for (let metric of Object.keys(METRIC_FUNCS)) {
@@ -118,6 +122,9 @@ const buildPage = () => {
       }
       else if (PERCENTAGE_METRICS.includes(metric)) {
         text = formatPercentage(METRICS[metric])
+      }
+      else {
+        text = formatNumber(METRICS[metric])
       }
     }
     try {
