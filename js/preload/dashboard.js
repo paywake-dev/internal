@@ -108,7 +108,7 @@ const formatPercentage = (n) => {
 }
 
 const buildPage = () => {
-  const NO_METRIC = "--"
+  const NO_METRIC = "N/A"
   for (let metric of Object.keys(METRIC_FUNCS)) {
     let text = (METRICS[metric] || NO_METRIC).toString()
     if (text != NO_METRIC) {
