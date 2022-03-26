@@ -51,6 +51,7 @@ const CURRENCY_METRICS = [
   "totalWakeupDeposits",
   "wakeupDepositsToday",
   "wakeupDepositsYesterday",
+  "wakeupDepositsTomorrow",
   "meanDepositToday",
   "meanDepositYesterday",
   "meanDepositAllTime",
