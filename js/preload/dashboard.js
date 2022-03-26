@@ -5,10 +5,13 @@ const METRIC_FUNCS = {
   totalWakeupDeposits: DATA_API.getTotalWakeupDeposits,
   wakeupDepositsToday: DATA_API.getWakeupDepositsToday,
   wakeupDepositsYesterday: DATA_API.getWakeupDepositsYesterday,
+  wakeupDepositsTomorrow: DATA_API.getWakeupDepositsTomorrow,
   wufrToday: DATA_API.getWuFRToday,
   wufrYesterday: DATA_API.getWuFRYesterday,
+  wufrAllTime: DATA_API.getWuFRAllTime,
   meanDepositToday: DATA_API.getMeanDepositToday,
   meanDepositYesterday: DATA_API.getMeanDepositYesterday,
+  meanDepositAllTime: DATA_API.getMeanDepositAllTime,
 
   //FINANCIAL
   totalRevenue: DATA_API.getTotalRevenue,

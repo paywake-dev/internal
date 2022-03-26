@@ -351,6 +351,11 @@ const DATA_API = {
       callback(r)
     })
   },
+  getWakeupDepositsTomorrow: (callback = (r) => {}) => {
+    DATA_API.getWakeupDepositsOnDay(DATA_API.constants.today + 1, (r) => {
+      callback(r)
+    })
+  },
   getDAUsToday: (callback = (r) => {}) => {
     DATA_API.getDAUsOnDay(DATA_API.constants.today, (r) => {
       callback(r)
@@ -371,6 +376,23 @@ const DATA_API = {
       callback(r)
     })
   },
+  getMeanDepositAllTime: (callback = (r) => {}) => {
+    let sum = 0
+    let c = 0
+    const recurse = (day) => {
+      DATA_API.getMeanDepositOnDay(day, (r) => {
+        sum += r;
+        c++;
+        if (day === DATA_API.constants.today) {
+          callback(sum / c)
+        }
+        else {
+          recurse(day + 1)
+        }
+      })
+    }
+    recurse(DATA_API.constants.launchDay)
+  },
   getWuFRToday: (callback = (r) => {}) => {
     DATA_API.getWuFROnDay(DATA_API.constants.today, (r) => {
       callback(r)
@@ -380,6 +402,23 @@ const DATA_API = {
     DATA_API.getWuFROnDay(DATA_API.constants.today - 1, (r) => {
       callback(r)
     })
+  },
+  getWuFRAllTime: (callback = (r) => {}) => {
+    let sum = 0
+    let c = 0
+    const recurse = (day) => {
+      DATA_API.getWuFROnDay(day, (r) => {
+        sum += r;
+        c++;
+        if (day === DATA_API.constants.today) {
+          callback(sum / c)
+        }
+        else {
+          recurse(day + 1)
+        }
+      })
+    }
+    recurse(DATA_API.constants.launchDay)
   },
   getRevenueToday: (callback = (r) => {}) => {
     DATA_API.getRevenueOnDay(DATA_API.constants.today, (r) => {
