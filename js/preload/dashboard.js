@@ -108,13 +108,16 @@ const formatPercentage = (n) => {
 }
 
 const buildPage = () => {
+  const NO_METRIC = "--"
   for (let metric of Object.keys(METRIC_FUNCS)) {
-    let text = METRICS[metric].toString()
-    if (CURRENCY_METRICS.includes(metric)) {
-      text = formatCurrency(METRICS[metric])
-    }
-    else if (PERCENTAGE_METRICS.includes(metric)) {
-      text = formatPercentage(METRICS[metric])
+    let text = (METRICS[metric] || NO_METRIC).toString()
+    if (text != NO_METRIC) {
+      if (CURRENCY_METRICS.includes(metric)) {
+        text = formatCurrency(METRICS[metric])
+      }
+      else if (PERCENTAGE_METRICS.includes(metric)) {
+        text = formatPercentage(METRICS[metric])
+      }
     }
     try {
       $("#__METRIC-" + metric.toString())[0].innerHTML = text
