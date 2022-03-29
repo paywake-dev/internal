@@ -512,6 +512,26 @@ const DATA_API = {
       callback(Math.floor(r * 15) / 100)
     })
   },
+  getMonthRevenue: (callback = (r) => {}) => {
+    let revenue = 0
+    const recurse = (day) => {
+      if (day === DATA_API.constants.today - 31) {
+        callback(revenue)
+      }
+      else {
+        DATA_API.getRevenueOnDay(day, (r) => {
+          revenue += r;
+          recurse(day - 1)
+        })
+      }
+    }
+    recurse(DATA_API.constants.today)
+  },
+  getMonthProfit: (callback = (r) => {}) => {
+    DATA_API.getMonthRevenue((r) => {
+      callback(Math.floor(r * 15) / 100)
+    })
+  },
   getTotalWakeupDeposits: (callback = (r) => {}) => {
     const onData = () => {
       let sum = 0
