@@ -25,6 +25,8 @@ const METRIC_FUNCS = {
   profitYesterday: DATA_API.getProfitYesterday,
   monthRevenue: DATA_API.getMonthRevenue,
   monthProfit: DATA_API.getMonthProfit,
+  yearlyRevenue: DATA_API.getYearRevenue,
+  yearlyProfit: DATA_API.getYearProfit,
 
   //USER BASE
   activeUsers: DATA_API.getTotalUsers,
@@ -46,6 +48,8 @@ const METRIC_FUNCS = {
 const CURRENCY_METRICS = [
   "totalRevenue",
   "totalProfit",
+  "yearlyRevenue",
+  "yearlyProfit",
   "monthRevenue",
   "monthProfit",
   "revenueToday",

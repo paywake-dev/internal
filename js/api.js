@@ -532,6 +532,17 @@ const DATA_API = {
       callback(Math.floor(r * 15) / 100)
     })
   },
+  getYearRevenue: (callback = (r) => {}) => {
+    DATA_API.getMonthRevenue((r) => {
+      callback(r * 12)
+    })
+  },
+
+  getYearProfit: (callback = (r) => {}) => {
+    DATA_API.getMonthProfit((r) => {
+      callback(r * 12)
+    })
+  },
   getTotalWakeupDeposits: (callback = (r) => {}) => {
     const onData = () => {
       let sum = 0
@@ -555,7 +566,6 @@ const DATA_API = {
     }
   },
   getTotalUsers: (callback = (r) => {}) => {
-
     const onData = () => {
       let users = []
       for (let point of DATA_API.datasets.wakeups) {
