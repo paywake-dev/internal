@@ -361,12 +361,12 @@ const DATA_API = {
       })
     })
   },
-  getProfitPerDAUToday: (callbacak = (r) => {
+  getProfitPerDAUToday: (callback = (r) => {
     DATA_API.getProfitPerDAUOnDay(DATA_API.constants.today, (r) => {
       callback(r)
     })
   }),
-  getProfitPerDAUYesterday: (callbacak = (r) => {
+  getProfitPerDAUYesterday: (callback = (r) => {
     DATA_API.getProfitPerDAUOnDay(DATA_API.constants.today - 1, (r) => {
       callback(r)
     })
