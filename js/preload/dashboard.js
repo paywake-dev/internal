@@ -23,6 +23,9 @@ const METRIC_FUNCS = {
   revenueYesterday: DATA_API.getRevenueYesterday,
   profitToday: DATA_API.getProfitToday,
   profitYesterday: DATA_API.getProfitYesterday,
+  profitPerDAUToday: DATA_API.getProfitPerDAUToday,
+  profitPerDAUYesterday: DATA_API.getProfitPerDAUYesterday,
+  profitPerDAUAllTime: DATA_API.getProfitPerDAUAllTime,
   monthRevenue: DATA_API.getMonthRevenue,
   monthProfit: DATA_API.getMonthProfit,
   yearlyRevenue: DATA_API.getYearRevenue,
@@ -66,6 +69,9 @@ const CURRENCY_METRICS = [
   "outstandingBalances",
   "averageOutstandingBalance",
   "maxBalance",
+  "profitPerDAUToday",
+  "profitPerDAUYesterday",
+  "profitPerDAUAllTime"
 ]
 const PERCENTAGE_METRICS = [
   "returnsToday",

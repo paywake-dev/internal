@@ -354,6 +354,40 @@ const DATA_API = {
       DATA_API.datasets.get.wakeups(onData)
     }
   },
+  getProfitPerDAUOnDay: (day, callback = (r) => {}) => {
+    DATA_API.getProfitOnDay(day, (p) => {
+      DATA_API.getDAUsOnDay(day, (d) => {
+        callback(p / d)
+      })
+    })
+  },
+  getProfitPerDAUToday: (callbacak = (r) => {
+    DATA_API.getProfitPerDAUOnDay(DATA_API.constants.today, (r) => {
+      callback(r)
+    })
+  }),
+  getProfitPerDAUYesterday: (callbacak = (r) => {
+    DATA_API.getProfitPerDAUOnDay(DATA_API.constants.today - 1, (r) => {
+      callback(r)
+    })
+  }),
+  getProfitPerDAUAllTime: (callback = (r) => {}) => {
+    let sum = 0
+    let c = 0
+    const recurse = (day) => {
+      DATA_API.getProfitOnDay(day, (r) => {
+        sum += r;
+        c++;
+        if (day === DATA_API.constants.today) {
+          callback(sum / c)
+        }
+        else {
+          recurse(day + 1)
+        }
+      })
+    }
+    recurse(DATA_API.constants.launchDay)
+  },
   getProfitOnDay: (day, callback = (r) => {}) => {
     DATA_API.getRevenueOnDay(day, (r) => {
       callback(Math.floor(r * 15) / 100)
