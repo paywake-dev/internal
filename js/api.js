@@ -365,12 +365,12 @@ const DATA_API = {
     DATA_API.getProfitPerDAUOnDay(DATA_API.constants.today, (r) => {
       callback(r)
     })
-  }),
+  },
   getProfitPerDAUYesterday: (callback = (r) => {}) => {
     DATA_API.getProfitPerDAUOnDay(DATA_API.constants.today - 1, (r) => {
       callback(r)
     })
-  }),
+  },
   getProfitPerDAUAllTime: (callback = (r) => {}) => {
     let sum = 0
     let c = 0
