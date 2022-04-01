@@ -375,7 +375,7 @@ const DATA_API = {
     let sum = 0
     let c = 0
     const recurse = (day) => {
-      DATA_API.getProfitOnDay(day, (r) => {
+      DATA_API.getProfitPerDAUOnDay(day, (r) => {
         sum += r;
         c++;
         if (day === DATA_API.constants.today) {
