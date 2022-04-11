@@ -79,8 +79,9 @@
       </a>
       <div class="between">
         <p id="name-and-title"><b><span class="__full-name-fill"></span></b><span>,&nbsp;</span><span class="__title-fill"></span></p>
-        <button class="gradient refresh-button" onclick="reloadMetrics()" id="refresh-big">Refresh Data</button>
-        <button class="gradient refresh-button" onclick="reloadMetrics()" id="refresh-small">Refresh</button>
+        <button class="gradient refresh-button" onclick="reloadMetrics()" id="refresh-big" style="display: none">Refresh Data</button>
+        <button class="gradient refresh-button" onclick="reloadMetrics()" id="refresh-small" style="display: none">Refresh</button>
+        <img id="data-loading" src="https://paywake.net/assets/images/loader-grey.svg">
       </div>
     </div>
     <div class="content">

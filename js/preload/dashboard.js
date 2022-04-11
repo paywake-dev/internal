@@ -204,3 +204,41 @@ const reloadMetrics = () => {
 $(document).ready(() => {
   initPage()
 })
+
+
+let __AJAX_STACK = 0
+
+const putAjaxLoader = () => {
+  $("#refresh-big")[0].style = "display: none"
+  $("#refresh-small")[0].style = "display: none"
+  $("#data-loading")[0].style = ""
+}
+
+const killAjaxLoader = () => {
+  $("#refresh-big")[0].style = ""
+  $("#refresh-small")[0].style = ""
+  $("#data-loading")[0].style = "display: none"
+}
+
+$(document).ajaxStart(() => {
+  if (__AJAX_STACK === 0) {
+    putAjaxLoader()
+  }
+  __AJAX_STACK++;
+})
+$(document).ajaxComplete(() => {
+  __AJAX_STACK--;
+  setTimeout(() => {
+    if (__AJAX_STACK < 1) {
+      killAjaxLoader()
+    }
+  }, 300)
+})
+$(document).ajaxError(() => {
+  __AJAX_STACK--;
+  setTimeout(() => {
+    if (__AJAX_STACK < 1) {
+      killAjaxLoader()
+    }
+  }, 300)
+})

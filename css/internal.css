@@ -72,3 +72,8 @@
 .metric > div > div:first-child > p {
   font-weight: bold;
 }
+
+#data-loading {
+  height: 41px;
+  width: 41px;
+}
