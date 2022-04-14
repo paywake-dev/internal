@@ -544,9 +544,19 @@ const DATA_API = {
     recurse(DATA_API.constants.today)
   },
   getTotalProfit: (callback = (r) => {}) => {
-    DATA_API.getTotalRevenue((r) => {
-      callback(Math.floor(r * 15) / 100)
-    })
+    let profit = 0
+    const recurse = (day) => {
+      if (day === DATA_API.constants.launchDay - 2) {
+        callback(profit)
+      }
+      else {
+        DATA_API.getProfitOnDay(day, (p) => {
+          profit += p;
+          recurse(day - 1)
+        })
+      }
+    }
+    recurse(DATA_API.constants.today)
   },
   getMonthRevenue: (callback = (r) => {}) => {
     let revenue = 0
