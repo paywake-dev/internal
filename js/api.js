@@ -316,7 +316,12 @@ const DATA_API = {
         if (parseInt(point.id.S.split("-")[1]) === day) {
           if (!(day > DATA_API.constants.today) && (day !== DATA_API.constants.today || DATA_API.utilities.time() > (parseInt(point.time.N) + 3))) {
             if (!parseInt(point.verified.N)) {
-              failed += (Math.floor(parseInt(point.deposit.N) * (1 - 0.029)) - 30)
+              if (parseInt(point.is2x.N)) {
+                failed += Math.floor(((parseInt(point.deposit.N) / 2) * (1 - 0.029)) - 30)
+              }
+              else {
+                failed += Math.floor((parseInt(point.deposit.N) * (1 - 0.029)) - 30)
+              }
             }
             else {
               total += parseInt(point.deposit.N)
