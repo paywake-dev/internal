@@ -14,6 +14,7 @@ const METRIC_FUNCS = {
   wufrAllTime: DATA_API.getWuFRAllTime,
   meanDepositToday: DATA_API.getMeanDepositToday,
   meanDepositYesterday: DATA_API.getMeanDepositYesterday,
+  meanDepositTomorrow: DATA_API.getMeanDepositTomorrow,
   meanDepositAllTime: DATA_API.getMeanDepositAllTime,
 
   //FINANCIAL
@@ -35,6 +36,7 @@ const METRIC_FUNCS = {
   activeUsers: DATA_API.getTotalUsers,
   activeUsersToday: DATA_API.getDAUsToday,
   activeUsersYesterday: DATA_API.getDAUsYesterday,
+  activeUsersTomorrow: DATA_API.getDAUsTomorrow,
   feedbackToday: DATA_API.getFeedbackToday,
   feedbackYesterday: DATA_API.getFeedbackYesterday,
   feedbackAll: DATA_API.getAllFeedback,

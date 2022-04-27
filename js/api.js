@@ -437,6 +437,11 @@ const DATA_API = {
       callback(r)
     })
   },
+  getDAUsTomorrow: (callback = (r) => {}) => {
+    DATA_API.getDAUsOnDay(DATA_API.constants.today + 1, (r) => {
+      callback(r)
+    })
+  },
   getMeanDepositToday: (callback = (r) => {}) => {
     DATA_API.getMeanDepositOnDay(DATA_API.constants.today, (r) => {
       callback(r)
@@ -444,6 +449,11 @@ const DATA_API = {
   },
   getMeanDepositYesterday: (callback = (r) => {}) => {
     DATA_API.getMeanDepositOnDay(DATA_API.constants.today - 1, (r) => {
+      callback(r)
+    })
+  },
+  getMeanDepositTomorrow: (callback = (r) => {}) => {
+    DATA_API.getMeanDepositOnDay(DATA_API.constants.today + 1, (r) => {
       callback(r)
     })
   },
