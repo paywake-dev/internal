@@ -67,6 +67,7 @@ const CURRENCY_METRICS = [
   "wakeupDepositsTomorrow",
   "meanDepositToday",
   "meanDepositYesterday",
+  "meanDepositTomorrow",
   "meanDepositAllTime",
   "outstandingBalances",
   "averageOutstandingBalance",
