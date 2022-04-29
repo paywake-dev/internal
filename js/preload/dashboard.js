@@ -303,6 +303,7 @@ const generateCanvas = (CANVAS_BLOCK_WIDTH = 8) => {
     $("#visualization")[0].remove()
   } catch (e) {}
   $("#visualization-container")[0].appendChild(CANVAS)
+  $("#visualization-description")[0].innerHTML = ("Viewing " + Object.keys(users).length.toString() + " users, " + moment().subtract(width, "days").format("MM/DD") + " to present")
 }
 
 window.onresize = () => {
