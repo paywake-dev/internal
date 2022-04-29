@@ -148,6 +148,7 @@ const buildPage = () => {
       $("#__METRIC-" + metric.toString())[0].innerHTML = text
     } catch (e) {}
   }
+  generateCanvas()
 }
 
 const fillAttributes = () => {
@@ -245,3 +246,67 @@ $(document).ajaxError(() => {
     }
   }, 300)
 })
+
+let CANVAS = null
+const generateCanvas = (CANVAS_BLOCK_WIDTH = 8) => {
+  const getUsernameFromID = (id) => {
+    let a = id.toString().trim().split("-")
+    a.shift()
+    a.shift()
+    return a.join("-").toString().trim()
+  }
+  CANVAS = document.createElement("canvas")
+  CANVAS.id = "visualization"
+  CANVAS.width = Math.min((window.innerWidth * 0.6) + 75, (window.innerHeight * 0.6) + 150)
+  const width = Math.ceil(CANVAS.width / CANVAS_BLOCK_WIDTH)
+  let wakeups = []
+  let users = {}
+  for (let wakeup of DATA_API.datasets.wakeups) {
+    const day = parseInt(wakeup.id.S.split("-")[1])
+    if (day <= DATA_API.constants.today && day > DATA_API.constants.today - width) {
+      wakeups.push(wakeup)
+    }
+  }
+  for (let wakeup of wakeups) {
+    const user = getUsernameFromID(wakeup.id.S)
+    if (!users[user]) {
+      users[user] = []
+    }
+    users[user].push(wakeup)
+  }
+  CANVAS.height = (Object.keys(users).length * CANVAS_BLOCK_WIDTH)
+  const drawPixel = (x,y,color) => {
+    let ctx = CANVAS.getContext("2d")
+    ctx.fillStyle = color
+    ctx.fillRect(CANVAS.width - ((x + 1) * CANVAS_BLOCK_WIDTH), y * CANVAS_BLOCK_WIDTH, CANVAS_BLOCK_WIDTH, CANVAS_BLOCK_WIDTH);
+  }
+  const getColorFromDeposit = (deposit) => {
+    return ("rgba(0,0,0," + Math.sqrt(deposit / 99) + ")")
+  }
+  const getMissedColorFromDeposit = (deposit) => {
+    return ("rgba(255,0,0," + Math.sqrt(deposit / 99) + ")")
+  }
+  let y = 0
+  for (let user in users) {
+    for (let wakeup of users[user]) {
+      let x = DATA_API.constants.today - parseInt(wakeup.id.S.split("-")[1])
+      let color = getMissedColorFromDeposit(parseInt(wakeup.deposit.N) / 100)
+      if (parseInt(wakeup.verified.N)) {
+        color = getColorFromDeposit(parseInt(wakeup.deposit.N) / 100)
+      }
+      drawPixel(x,y,color)
+    }
+    y++
+  }
+  CANVAS.style.marginTop = "24px"
+  try {
+    $("#visualization")[0].remove()
+  } catch (e) {}
+  $("#visualization-container")[0].appendChild(CANVAS)
+}
+
+window.onresize = () => {
+  if (Math.min((window.innerWidth * 0.6) + 75, (window.innerHeight * 0.6) + 150) !== CANVAS.width) {
+    generateCanvas()
+  }
+}
