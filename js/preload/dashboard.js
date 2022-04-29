@@ -275,10 +275,12 @@ const generateCanvas = (CANVAS_BLOCK_WIDTH = 8) => {
     users[user].push(wakeup)
   }
   CANVAS.height = (Object.keys(users).length * CANVAS_BLOCK_WIDTH)
+  let ctx = CANVAS.getContext("2d")
+  ctx.fillStyle = "white"
+  ctx.fillRect(0,0,CANVAS.width,CANVAS.height)
   const drawPixel = (x,y,color) => {
-    let ctx = CANVAS.getContext("2d")
     ctx.fillStyle = color
-    ctx.fillRect(CANVAS.width - ((x + 1) * CANVAS_BLOCK_WIDTH), y * CANVAS_BLOCK_WIDTH, CANVAS_BLOCK_WIDTH, CANVAS_BLOCK_WIDTH);
+    ctx.fillRect(CANVAS.width - ((x + 1) * CANVAS_BLOCK_WIDTH), y * CANVAS_BLOCK_WIDTH, CANVAS_BLOCK_WIDTH, CANVAS_BLOCK_WIDTH)
   }
   const getColorFromDeposit = (deposit) => {
     return ("rgba(0,0,0," + Math.sqrt(deposit / 99) + ")")
