@@ -292,7 +292,7 @@ const generateCanvas = (CANVAS_BLOCK_WIDTH = 8) => {
     return ("rgba(0,0,255," + Math.sqrt(deposit / 99) + ")")
   }
   let y = 0
-  for (let user in users) {
+  for (let user of Object.keys(users).reverse()) {
     for (let wakeup of users[user]) {
       let x = DATA_API.constants.today - parseInt(wakeup.id.S.split("-")[1])
       let color = getMissedColorFromDeposit(parseInt(wakeup.deposit.N) / 100)
