@@ -299,7 +299,7 @@ const generateCanvas = (CANVAS_BLOCK_WIDTH = 8) => {
       if (DATA_API.constants.today < parseInt(wakeup.id.S.split("-")[1])) {
         color = getPendingColorFromDeposit(parseInt(wakeup.deposit.N) / 100)
       }
-      else if (DATA_API.constants.today === parseInt(wakeup.day.N)) {
+      if (DATA_API.constants.today === parseInt(wakeup.id.S.split("-")[1])) {
         if (DATA_API.utilities.time() < (parseInt(wakeup.time.N) + 3)) {
           color = getPendingColorFromDeposit(parseInt(wakeup.deposit.N) / 100)
         }
