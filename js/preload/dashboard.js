@@ -288,11 +288,22 @@ const generateCanvas = (CANVAS_BLOCK_WIDTH = 8) => {
   const getMissedColorFromDeposit = (deposit) => {
     return ("rgba(255,0,0," + Math.sqrt(deposit / 99) + ")")
   }
+  const getPendingColorFromDeposit = (deposit) => {
+    return ("rgba(0,0,255," + Math.sqrt(deposit / 99) + ")")
+  }
   let y = 0
   for (let user in users) {
     for (let wakeup of users[user]) {
       let x = DATA_API.constants.today - parseInt(wakeup.id.S.split("-")[1])
       let color = getMissedColorFromDeposit(parseInt(wakeup.deposit.N) / 100)
+      if (DATA_API.constants.today < parseInt(wakeup.day.N)) {
+        color = getPendingColorFromDeposit(parseInt(wakeup.deposit.N) / 100)
+      }
+      else if (DATA_API.constants.today === parseInt(wakeup.day.N)) {
+        if (DATA_API.utilities.time() < (parseInt(wakeup.time.N) + 3)) {
+          color = getPendingColorFromDeposit(parseInt(wakeup.deposit.N) / 100)
+        }
+      }
       if (parseInt(wakeup.verified.N)) {
         color = getColorFromDeposit(parseInt(wakeup.deposit.N) / 100)
       }
