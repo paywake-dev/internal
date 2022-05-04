@@ -10,8 +10,8 @@ const DATA_API = {
   },
   utilities: {
     time: () => {
-      const m = moment(Date.now()).tz(TIME_ZONE)
-      return ((m.hours() * 60) + m.minutes())
+      const m = moment(Date.now()).tz(TIME_ZONE).subtract(2, "hours").add(1, "minute")
+      return (((m.hours() * 60) + m.minutes()) + 119)
     },
   },
   datasets: {
